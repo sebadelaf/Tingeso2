@@ -4,9 +4,11 @@ import com.tingeso.reservascomprobantesservice.Entity.ReservaEntity;
 import com.tingeso.reservascomprobantesservice.Repository.ReservaRepository;
 import com.tingeso.reservascomprobantesservice.Service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -41,6 +43,15 @@ public class ReservaController {
         return reservaService.calcularprecioinicial(idreserva);
     }
 * */
+    @GetMapping("/obtenerById/{id}")
+    public ResponseEntity<ReservaEntity> obtenerReservaById(@PathVariable Long id) {
+        Optional<ReservaEntity> reserva = reservaRepository.findById(id);
+        if (reserva.isPresent()) {
+            return ResponseEntity.ok(reserva.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping("/todas")
     public List<ReservaEntity> obtenerreservas(){

@@ -135,7 +135,19 @@ public class ComprobanteService {
         // Generar y enviar PDF
         byte[] pdf = generarPDFComprobante(comprobante, reserva);
         enviarComprobantePorCorreo(reserva.getEmail(), pdf);
-
+        // --- Notificar a M6 (Rack Pista Service) ---
+        // Endpoint: POST http://localhost:8085/rack/registrar-desde-reserva/{idReserva}
+        String rackServiceUrl = "http://localhost:8085/rack/registrar-desde-reserva/" + reserva.getId();
+        try {
+            restTemplate.postForObject(rackServiceUrl, null, String.class); // Usamos String.class porque el retorno es BloqueHorarioEntity
+            // y no queremos la dependencia del DTO de M6 en M5.
+            // Podría ser void si el M6 endpoint retorna 200 OK.
+            System.out.println("Reserva " + reserva.getId() + " notificada a Rack Service.");
+        } catch (Exception e) {
+            // Maneja el error si M6 no responde o falla al registrar.
+            System.err.println("Error al notificar al Rack Service sobre la reserva " + reserva.getId() + ": " + e.getMessage());
+        }
+// --- Fin Notificación a M6 ---
         return comprobante;
     }
 
