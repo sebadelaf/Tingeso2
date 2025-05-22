@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Ejecutar Backend") {
+            steps {
+                build job: 'backend-pipeline'
+            }
+        }
+
+        stage("Ejecutar Frontend") {
+            steps {
+                build job: 'frontend-pipeline'
+            }
+        }
+    }
+}
