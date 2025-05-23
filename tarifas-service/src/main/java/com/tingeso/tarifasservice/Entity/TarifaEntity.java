@@ -19,4 +19,13 @@ public class TarifaEntity {
     private int duracionMinutos; // Duración total de la reserva
     // Puedes añadir campos para el número de vueltas o tiempo máximo si lo necesitas para mayor claridad
     private String descripcion; // Ej: "10 vueltas o máx 10 min"
+
+    public TarifaEntity(int tipoReserva, float precioBase, int duracionMinutos, String descripcion) {
+        this.id = id;
+        this.tipoReserva = tipoReserva;
+        this.precioBase = precioBase;
+        this.duracionMinutos = duracionMinutos;
+        this.descripcion = descripcion;
+    }
+
 }

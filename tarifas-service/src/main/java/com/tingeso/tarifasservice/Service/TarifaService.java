@@ -18,9 +18,9 @@ public class TarifaService {
     @PostConstruct
     public void initData() {
         if (tarifaRepository.count() == 0) {
-            tarifaRepository.save(new TarifaEntity(null, 1, 15000.0f, 30, "10 vueltas o máx 10 min")); // [cite: 17]
-            tarifaRepository.save(new TarifaEntity(null, 2, 20000.0f, 35, "15 vueltas o máx 15 min")); // [cite: 17]
-            tarifaRepository.save(new TarifaEntity(null, 3, 25000.0f, 40, "20 vueltas o máx 20 min")); // [cite: 17]
+            tarifaRepository.save(new TarifaEntity(1, 15000.0f, 30, "10 vueltas o máx 10 min")); // [cite: 17]
+            tarifaRepository.save(new TarifaEntity(2, 20000.0f, 35, "15 vueltas o máx 15 min")); // [cite: 17]
+            tarifaRepository.save(new TarifaEntity(3, 25000.0f, 40, "20 vueltas o máx 20 min")); // [cite: 17]
             System.out.println("Datos iniciales de tarifas cargados.");
         }
     }
