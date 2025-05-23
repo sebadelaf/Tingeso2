@@ -2,7 +2,7 @@ server:
   port: 0
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/rmf5
+    url: jdbc:postgresql://localhost:5432/rfm5
     username: postgres
     password: 1234
   mail:
