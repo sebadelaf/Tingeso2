@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rmf5
+    username: postgres
+    password: 1234
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sebastian.delafuente.c@usach.cl
+    password: yqbd dwxr pzeh somr
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka-server-service:8761/eureka/
