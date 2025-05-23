@@ -18,7 +18,7 @@ public class RackPistaService {
 
     @Autowired
     private RestTemplate restTemplate; // Para obtener detalles de la reserva de M5
-    private final String RESERVAS_SERVICE_URL = "http://localhost:8080/reservas"; // <-- IMPORTANT: Adjust this URL
+    private final String RESERVAS_SERVICE_URL = "http://localhost:8079/reservas"; // <-- IMPORTANT: Adjust this URL
     public List<ReservaEntity> obtenerTodasLasReservasExternas() {
         String url = RESERVAS_SERVICE_URL + "/todas";
 

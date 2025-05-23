@@ -26,8 +26,8 @@ public class ReporteService {
     private RestTemplate restTemplate; // Para llamar a M5 (reservas-comprobantes-service)
 
     // URL base del servicio de reservas y comprobantes (M5)
-    private final String COMPROBANTES_SERVICE_URL = "http://localhost:8080/comprobantes";
-    private final String RESERVAS_SERVICE_URL = "http://localhost:8080/reservas";
+    private final String COMPROBANTES_SERVICE_URL = "http://localhost:8079/comprobantes";
+    private final String RESERVAS_SERVICE_URL = "http://localhost:8079/reservas";
 
 
     // Adaptación de reporteporgrupo de tu ComprobanteService original
