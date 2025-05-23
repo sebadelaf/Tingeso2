@@ -16,7 +16,7 @@ public class TarifaController {
     @Autowired
     private TarifaService tarifaService;
 
-    @GetMapping
+    @GetMapping("/todas")
     public ResponseEntity<List<TarifaEntity>> getAllTarifas() {
         List<TarifaEntity> tarifas = tarifaService.obtenerTodasLasTarifas();
         return ResponseEntity.ok(tarifas);
