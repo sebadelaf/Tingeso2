@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/config-server/Dockerfile" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/eureka-server/gateway-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/descuentos-frecuentes-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/descuentos-grupo-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/rack-pista-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reportes-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/reservas-comprobantes-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tarifas-especiales-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tarifas-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

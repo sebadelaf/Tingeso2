@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,15 +11,37 @@
         <module name="eureka-server" />
         <module name="gateway-server" />
       </profile>
+      <profile name="Annotation profile for tarifas-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar" />
+        </processorPath>
+        <module name="reportes-service" />
+        <module name="rack-pista-service" />
+        <module name="tarifas-especiales-service" />
+        <module name="descuentos-grupo-service" />
+        <module name="reservas-comprobantes-service" />
+        <module name="tarifas-service" />
+        <module name="descuentos-frecuentes-service" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-server" options="-parameters" />
+      <module name="descuentos-frecuentes-service" options="-parameters" />
+      <module name="descuentos-grupo-service" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
       <module name="gateway-server.main" options="-parameters" />
       <module name="gateway-server.test" options="-parameters" />
+      <module name="rack-pista-service" options="-parameters" />
+      <module name="reportes-service" options="-parameters" />
+      <module name="reservas-comprobantes-service" options="-parameters" />
+      <module name="tarifas-especiales-service" options="-parameters" />
+      <module name="tarifas-service" options="-parameters" />
     </option>
   </component>
 </project>
