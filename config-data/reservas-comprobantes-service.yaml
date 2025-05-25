@@ -2,8 +2,8 @@ server:
   port: 0
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/rfm5
-    username: postgres
+    url: ${SPRING_DATASOURCE_URL_RFM5}
+    username: ${SPRING_DATASOURCE_USERNAME}
     password: 1234
   mail:
     host: smtp.gmail.com
@@ -15,9 +15,9 @@ spring:
       mail.smtp.starttls.enable: true
 eureka:
   instance:
-    hostname: localhost
+    preferIpAddress: true
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_SERVER_URL}

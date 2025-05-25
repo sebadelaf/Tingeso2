@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: app-configmap # Nombre que usaremos para referenciar este ConfigMap
+data:
+  # URLs para los servicios de infraestructura (usarán los nombres de Service de Kubernetes)
+  CONFIG_SERVER_URL: "http://config-server-service:8888"
+  EUREKA_SERVER_URL: "http://eureka-server-service:8761/eureka/"
+
+  # URLs y usuario para las bases de datos
+  # La contraseña la pondremos directamente en los Deployments como variable de entorno
+  SPRING_DATASOURCE_URL_RMF1: "jdbc:postgresql://postgres-db-service:5432/rmf1"
+  SPRING_DATASOURCE_URL_RMF2: "jdbc:postgresql://postgres-db-service:5432/rmf2"
+  SPRING_DATASOURCE_URL_RMF3: "jdbc:postgresql://postgres-db-service:5432/rmf3"
+  SPRING_DATASOURCE_URL_RFM5: "jdbc:postgresql://postgres-db-service:5432/rfm5" # Asegúrate que 'rfm5' sea el nombre correcto de tu BD para reservas-comprobantes
+  SPRING_DATASOURCE_URL_RMF6: "jdbc:postgresql://postgres-db-service:5432/rmf6"
+  SPRING_DATASOURCE_USERNAME: "postgres" # Usuario de la BD

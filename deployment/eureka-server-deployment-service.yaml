@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-server-deployment
+  labels:
+    app: eureka-server-deployment
+spec:
+  selector:
+    matchLabels:
+      app: eureka-server-deployment
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eureka-server-deployment
+    spec:
+      containers:
+        - name: eureka-server
+          image: sebadelaf10/eureka-server
+          ports:
+            - containerPort: 8761
+          env:
+            - name: SPRING_CONFIG_IMPORT
+              value: "configserver:${CONFIG_SERVER_URL}" # Placeholder que resuelves abajo
+            - name: CONFIG_SERVER_URL # Tomado del app-configmap
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: CONFIG_SERVER_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-server-service
+  labels:
+    app: eureka-server-service
+spec:
+  selector:
+    app: eureka-server-deployment
+  ports:
+    - protocol: TCP
+      port: 8761
+      targetPort: 8761
+  type: LoadBalancer

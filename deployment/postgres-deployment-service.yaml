@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db-deployment # Nombre del Deployment para PostgreSQL
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-db # Etiqueta para seleccionar los Pods
+  template:
+    metadata:
+      labels:
+        app: postgres-db # Etiqueta que tendrán los Pods
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:13 # Imagen oficial de PostgreSQL, versión 13
+          ports:
+            - containerPort: 5432 # Puerto estándar de PostgreSQL
+          env:
+            # El usuario ya está definido en app-configmap como SPRING_DATASOURCE_USERNAME: "postgres"
+            # La contraseña la inyectaremos directamente aquí ya que decidiste no usar Secrets por ahora.
+            # ¡RECUERDA! Esto es menos seguro si compartes este archivo.
+            - name: POSTGRES_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: app-configmap
+                  key: SPRING_DATASOURCE_USERNAME # Que es "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "1234" # TU CONTRASEÑA REAL DE POSTGRES.
+                # Si no se especifica, se crea una con el mismo nombre que POSTGRES_USER.
+                # Las bases rmf1, rmf2, etc., se crearán por los microservicios
+              # si tienen 'spring.jpa.hibernate.ddl-auto=create' o 'update'.
+          volumeMounts: # Para persistencia de datos (aunque aquí usemos emptyDir para simplicidad en Minikube)
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes: # Define el volumen
+        - name: postgres-storage
+          emptyDir: {} # Para Minikube, los datos se perderán si el Pod se reinicia.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-db-service # Nombre DNS interno para que los microservicios accedan a la BD
+spec:
+  selector:
+    app: postgres-db # Debe coincidir con la etiqueta de los Pods del Deployment
+  ports:
+    - protocol: TCP
+      port: 5432 # Puerto que expone este Service DENTRO del clúster
+      targetPort: 5432 # Puerto del contenedor PostgreSQL al que se redirige el tráfico
+  type: ClusterIP # Correcto, la base de datos solo debe ser accesible internamente
