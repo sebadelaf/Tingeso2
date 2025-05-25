@@ -18,20 +18,7 @@ spec:
         - name: gateway-server
           image: sebadelaf10/gateway-server
           ports:
-            - containerPort: 8079
-          env:
-            - name: SPRING_CONFIG_IMPORT
-              value: "configserver:${CONFIG_SERVER_URL}"
-            - name: CONFIG_SERVER_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: app-configmap
-                  key: CONFIG_SERVER_URL
-            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE # Para que el gateway encuentre Eureka
-              valueFrom:
-                 configMapKeyRef:
-                   name: app-configmap
-                   key: EUREKA_SERVER_URL
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -44,6 +31,6 @@ spec:
     app: gateway-server-deployment
   ports:
     - protocol: TCP
-      port: 8079
-      targetPort: 8079
+      port: 8080
+      targetPort: 8080
   type: LoadBalancer

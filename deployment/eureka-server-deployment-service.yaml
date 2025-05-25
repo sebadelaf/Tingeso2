@@ -19,14 +19,6 @@ spec:
           image: sebadelaf10/eureka-server
           ports:
             - containerPort: 8761
-          env:
-            - name: SPRING_CONFIG_IMPORT
-              value: "configserver:${CONFIG_SERVER_URL}" # Placeholder que resuelves abajo
-            - name: CONFIG_SERVER_URL # Tomado del app-configmap
-              valueFrom:
-                configMapKeyRef:
-                  name: app-configmap
-                  key: CONFIG_SERVER_URL
 ---
 apiVersion: v1
 kind: Service
