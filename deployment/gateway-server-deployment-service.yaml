@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-server
-          image: sebadelaf10/gateway-server
+          image: sebadelaf10/gateway-server:latest
           ports:
             - containerPort: 8079
 ---

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: config-server
-          image: sebadelaf10/config-server
+          image: sebadelaf10/config-server:latest
           ports:
             - containerPort: 8888
 ---

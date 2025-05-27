@@ -1,29 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tarifas-service-deployment
+  name: descuentos-grupo-service-deployment
   labels:
-    app: tarifas-service # Etiqueta para este Deployment
+    app: descuentos-grupo-service # Etiqueta para este Deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tarifas-service # Selector para los Pods gestionados por este Deployment
+      app: descuentos-grupo-service # Selector para los Pods gestionados por este Deployment
   template:
     metadata:
       labels:
-        app: tarifas-service # Etiqueta que tendrán los Pods
+        app: descuentos-grupo-service # Etiqueta que tendrán los Pods
     spec:
       containers:
-        - name: tarifas-service
-          image: sebadelaf10/tarifas-service:latest # ¡REEMPLAZA con tu imagen y tag correctos!
+        - name: descuentos-grupo-service
+
+          image: sebadelaf10/descuentos-grupo-service:latest # ¡REEMPLAZA con tu imagen y tag correctos!
           # Si tu aplicación está configurada para server.port=0,
           # el puerto real será dinámico. Eureka lo descubrirá.
           # Puedes declarar un containerPort (ej. 8080, el default de Spring si no fuera 0)
           # si tus probes apuntan a ese puerto fijo del actuador o si el actuador usa el puerto de la app.
           # Si el actuador tiene un puerto de gestión diferente y fijo, usa ese para las probes.
           ports:
-            - containerPort: 8080 # Puerto donde el actuador podría estar o el puerto base de la app
+            - containerPort: 8082 # Puerto donde el actuador podría estar o el puerto base de la app
           env:
 
             # Variables de la base de datos (tomadas del ConfigMap y Secret)
@@ -31,7 +32,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: app-configmap
-                  key: SPRING_DATASOURCE_URL_RMF1 # Clave específica para la BD de tarifas-service
+                  key: SPRING_DATASOURCE_URL_RMF2 # Clave específica para la BD de tarifas-service
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 configMapKeyRef:
@@ -41,15 +42,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tarifas-service # Nombre DNS para que otros servicios (como el Gateway) lo encuentren
+  name: descuentos-grupo-service # Nombre DNS para que otros servicios (como el Gateway) lo encuentren
   labels:
-    app: tarifas-service # Etiqueta para este Service
+    app: descuentos-grupo-service # Etiqueta para este Service
 spec:
   selector:
-    app: tarifas-service # Debe coincidir con la etiqueta de los Pods del Deployment
+    app: descuentos-grupo-service # Debe coincidir con la etiqueta de los Pods del Deployment
   ports:
     - protocol: TCP
-      port: 8080
+      port: 8082
       # El Gateway se comunicará con tarifas-service:80 (o solo tarifas-service si usa Eureka lb)
-      targetPort: 8080
+      targetPort: 8082
   type: LoadBalancer
