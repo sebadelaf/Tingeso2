@@ -26,10 +26,8 @@ public class ReporteService {
     private RestTemplate restTemplate; // Para llamar a M5 (reservas-comprobantes-service)
 
     // URL base del servicio de reservas y comprobantes (M5)
-    private final String COMPROBANTES_SERVICE_URL = "http://localhost:8079/comprobantes";
-    private final String RESERVAS_SERVICE_URL = "http://localhost:8079/reservas";
-
-
+    private final String COMPROBANTES_SERVICE_URL = "http://gateway-server-service:8079/comprobantes";
+    private final String RESERVAS_SERVICE_URL = "http://gateway-server-service:8079/reservas";
     // Adaptación de reporteporgrupo de tu ComprobanteService original
     public List<List<Long>> reporteporgrupo(String mesinicio, String mesfin) {
         // Validación de meses como en tu ComprobanteService original

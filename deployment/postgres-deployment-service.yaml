@@ -100,5 +100,4 @@ data:
     CREATE DATABASE rmf1;
     CREATE DATABASE rmf2;
     CREATE DATABASE rmf3;
-    CREATE DATABASE rfm5;       # Revisa este nombre si es rmf5 o rfm5
-    CREATE DATABASE rmf6;
+    CREATE DATABASE rfm5;

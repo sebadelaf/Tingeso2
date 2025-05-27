@@ -69,7 +69,7 @@ public class ComprobanteService {
 
         // 1. Obtener Precio Inicial del Tarifas Service (M1)
         // Endpoint: GET http://localhost:8081/tarifas/precio-inicial?tipoReserva={tipoReserva}&cantidadPersonas={cantidadPersonas}
-        String tarifasServiceUrl = "http://localhost:8079/tarifas/precio-inicial?tipoReserva=" + reserva.getTiporeserva() + "&cantidadPersonas=" + reserva.getCantidadpersonas();
+        String tarifasServiceUrl = "http://gateway-server-service:8079/tarifas/precio-inicial?tipoReserva=" + reserva.getTiporeserva() + "&cantidadPersonas=" + reserva.getCantidadpersonas();
         Float precioInicialBruto = restTemplate.getForObject(tarifasServiceUrl, Float.class);
 
         if (precioInicialBruto == null || precioInicialBruto <= 0) {
@@ -78,7 +78,7 @@ public class ComprobanteService {
 
         // 2. Aplicar Descuento/Recargo por Días Especiales del Tarifas Especiales Service (M4)
         // Endpoint: GET http://localhost:8084/tarifas-especiales/aplicar-descuento-dia-especial?fechahora={fechahora}&precioInicialBase={precioInicialBase}
-        String tarifasEspecialesServiceUrl = "http://localhost:8079/tarifas-especiales/aplicar-descuento-dia-especial?fechahora=" + reserva.getFechahora() + "&precioInicialBase=" + precioInicialBruto;
+        String tarifasEspecialesServiceUrl = "http://gateway-server-service:8079/tarifas-especiales/aplicar-descuento-dia-especial?fechahora=" + reserva.getFechahora() + "&precioInicialBase=" + precioInicialBruto;
         Float precioConDescuentoDiaEspecial = restTemplate.getForObject(tarifasEspecialesServiceUrl, Float.class);
 
         if (precioConDescuentoDiaEspecial == null) {
@@ -90,19 +90,19 @@ public class ComprobanteService {
 
         // 3. Calcular Descuento por Grupo del Descuentos Grupo Service (M2)
         // Endpoint: GET http://localhost:8082/descuentos-grupo/calcular?cantidadPersonas={cantidadPersonas}&precioInicial={precioInicial}
-        String descuentosGrupoServiceUrl = "http://localhost:8079/descuentos-grupo/calcular?cantidadPersonas=" + reserva.getCantidadpersonas() + "&precioInicial=" + precioParaDescuentos;
+        String descuentosGrupoServiceUrl = "http://gateway-server-service:8079/descuentos-grupo/calcular?cantidadPersonas=" + reserva.getCantidadpersonas() + "&precioInicial=" + precioParaDescuentos;
         Float dctogrupo = restTemplate.getForObject(descuentosGrupoServiceUrl, Float.class);
         if (dctogrupo == null) dctogrupo = 0f;
 
         // 4. Calcular Descuento Especial (Frecuente) del Descuentos Frecuentes Service (M3)
         // Endpoint: GET http://localhost:8083/descuentos-frecuentes/calcular?rutCliente={rutCliente}&precioInicial={precioInicial}
-        String descuentosFrecuentesServiceUrl = "http://localhost:8079/descuentos-frecuentes/calcular?rutCliente=" + reserva.getRutusuario() + "&precioInicial=" + precioParaDescuentos;
+        String descuentosFrecuentesServiceUrl = "http://gateway-server-service:8079/descuentos-frecuentes/calcular?rutCliente=" + reserva.getRutusuario() + "&precioInicial=" + precioParaDescuentos;
         Float dctoespecial = restTemplate.getForObject(descuentosFrecuentesServiceUrl, Float.class);
         if (dctoespecial == null) dctoespecial = 0f;
 
         // 5. Calcular Descuento por Cumpleaños del Tarifas Especiales Service (M4)
         // Endpoint: GET http://localhost:8084/tarifas-especiales/calcular-descuento-cumpleanos?cantidadPersonas={cantidadPersonas}&precioInicialOriginal={precioInicialOriginal}&cantidadCumple={cantidadCumple}
-        String cumpleanosServiceUrl = "http://localhost:8079/tarifas-especiales/calcular-descuento-cumpleanos?cantidadPersonas=" + reserva.getCantidadpersonas() + "&precioInicialOriginal=" + precioInicialBruto + "&cantidadCumple=" + reserva.getCantidadcumple();
+        String cumpleanosServiceUrl = "http://gateway-server-service:8079/tarifas-especiales/calcular-descuento-cumpleanos?cantidadPersonas=" + reserva.getCantidadpersonas() + "&precioInicialOriginal=" + precioInicialBruto + "&cantidadCumple=" + reserva.getCantidadcumple();
         Float dctocumple = restTemplate.getForObject(cumpleanosServiceUrl, Float.class);
         if (dctocumple == null) dctocumple = 0f;
 

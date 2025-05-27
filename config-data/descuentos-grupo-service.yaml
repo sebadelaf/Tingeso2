@@ -2,12 +2,12 @@ server:
   port: 0
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/rmf2
-    username: postgres
+    url: ${SPRING_DATASOURCE_URL_RMF2}
+    username: ${SPRING_DATASOURCE_USERNAME}
     password: 1234
-eureka:
-  instance:
-    hostname: localhost
+  eureka:
+    instance:
+      preferIpAddress: true
   client:
     fetch-registry: true
     register-with-eureka: true
