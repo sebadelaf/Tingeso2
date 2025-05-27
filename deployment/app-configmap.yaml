@@ -12,6 +12,6 @@ data:
   SPRING_DATASOURCE_URL_RMF1: "jdbc:postgresql://postgres-db-service:5432/rmf1"
   SPRING_DATASOURCE_URL_RMF2: "jdbc:postgresql://postgres-db-service:5432/rmf2"
   SPRING_DATASOURCE_URL_RMF3: "jdbc:postgresql://postgres-db-service:5432/rmf3"
-  SPRING_DATASOURCE_URL_RFM5: "jdbc:postgresql://postgres-db-service:5432/rfm5" # Asegúrate que 'rfm5' sea el nombre correcto de tu BD para reservas-comprobantes
+  SPRING_DATASOURCE_URL_RFM5: "jdbc:postgresql://postgres-db-service:5432/rfm5"
   SPRING_DATASOURCE_URL_RMF6: "jdbc:postgresql://postgres-db-service:5432/rmf6"
   SPRING_DATASOURCE_USERNAME: "postgres" # Usuario de la BD
