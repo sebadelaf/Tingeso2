@@ -5,9 +5,9 @@ spring:
     url: ${SPRING_DATASOURCE_URL_RMF3}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: 1234
-  eureka:
-    instance:
-      preferIpAddress: true
+eureka:
+  instance:
+    preferIpAddress: true
   client:
     fetch-registry: true
     register-with-eureka: true
