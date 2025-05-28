@@ -1,7 +1,5 @@
 package com.tingeso.rackpistaservice.Entity;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
