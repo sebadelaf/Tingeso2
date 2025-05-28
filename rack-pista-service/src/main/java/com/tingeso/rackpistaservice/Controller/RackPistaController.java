@@ -1,6 +1,7 @@
 package com.tingeso.rackpistaservice.Controller;
 
 import com.tingeso.rackpistaservice.Entity.ReservaEntity;
+import com.tingeso.rackpistaservice.Repository.ReservaRepository;
 import com.tingeso.rackpistaservice.Service.RackPistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,10 @@ import java.util.List;
 public class RackPistaController {
 
     @Autowired
-    private RackPistaService rackPistaService;
+    private ReservaRepository reservaRepository;
 
     @GetMapping("/reservas")
     public List<ReservaEntity> reservas(){
-        return rackPistaService.obtenerTodasLasReservasExternas();
+        return reservaRepository.findAll();
     }
     }

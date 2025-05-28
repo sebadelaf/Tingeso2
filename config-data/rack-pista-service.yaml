@@ -2,7 +2,7 @@ server:
   port: 0
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL_RMF6}
+    url: ${SPRING_DATASOURCE_URL_RMF5}
     username: postgres
     password: 1234
 eureka:
