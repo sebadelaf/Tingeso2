@@ -39,8 +39,3 @@ EXPOSE 80
 # Podemos añadir este CMD para asegurar que corre en primer plano (necesario para Docker).
 CMD ["nginx", "-g", "daemon off;"]
 
-# Nota: Para Single Page Applications (SPA) como React, podrías necesitar
-# copiar una configuración personalizada de Nginx aquí para que maneje
-# correctamente las rutas del frontend (ej. redirigir todo a index.html).
-# Por ahora, lo dejamos simple.
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
