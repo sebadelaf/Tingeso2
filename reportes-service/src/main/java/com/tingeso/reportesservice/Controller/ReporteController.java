@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reportes")
-@CrossOrigin("*")
 public class ReporteController {
 
     @Autowired

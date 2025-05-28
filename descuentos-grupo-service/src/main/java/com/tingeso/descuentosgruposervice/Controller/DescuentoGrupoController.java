@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/descuentos-grupo")
-@CrossOrigin("*")
 public class DescuentoGrupoController {
 
     @Autowired

@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarifas")
-@CrossOrigin("*") // Para permitir peticiones desde el frontend
 public class TarifaController {
 
     @Autowired

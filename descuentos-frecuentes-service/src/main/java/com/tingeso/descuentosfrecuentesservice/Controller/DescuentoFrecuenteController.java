@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/descuentos-frecuentes")
-@CrossOrigin("*")
 public class DescuentoFrecuenteController {
 
     @Autowired

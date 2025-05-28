@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: sebadelaf10/frontend
+          image: sebadelaf10/frontend:latest
           ports:
             - containerPort: 80
 ---
