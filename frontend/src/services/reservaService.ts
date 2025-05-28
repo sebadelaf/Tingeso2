@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ReservaEntity, ReservaFormInput } from '../types/reserva';
 //direccion de mi backend
 //const API_BASE_URL = 'http://52.191.57.93:8080';
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://gateway-server-service:8079';
 // Creamos una "instancia" de axios. Es como configurar un mensajero
 // que ya sabe a qué dirección base (API_BASE_URL) ir y que habla JSON.
 const apiClient = axios.create({
@@ -15,7 +15,7 @@ const apiClient = axios.create({
 //Obtener todas las reservas para rellenar el calendario
 export const fetchReservas=async(): Promise<ReservaEntity[]> =>{
     try{
-        const response = await apiClient.get<ReservaEntity[]>('/reservas/todas');
+        const response = await apiClient.get<ReservaEntity[]>('/rack/reservas'); // Hacemos una petición GET a '/reservas'.
         return response.data;
     }
     catch(error){

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ReporteDTO, ReporteData } from '../types/reportes';
 // --- IMPORTANTE ---
 //const API_BASE_URL = 'http://52.191.57.93:8080';
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = 'http://gateway-server-service:8079';
 // ---------------------
 
 const apiClient = axios.create({
@@ -49,7 +49,7 @@ export const fetchReportePorTipo = async (filtros: ReporteDTO): Promise<ReporteD
       try {
           console.log("(comprobanteService) Fetching reporte por tipo:", filtros);
           // Hacemos POST a /comprobantes/reportetipo enviando los filtros en el cuerpo
-          const response = await apiClient.post<ReporteData>('/comprobantes/reportetipo', filtros);
+          const response = await apiClient.post<ReporteData>('/reportes/tipo-reserva', filtros);
           console.log("(comprobanteService) Reporte por tipo recibido:", response.data);
           return response.data || []; // Devuelve los datos o un array vacío si no viene nada
       } catch (error) {
@@ -70,7 +70,7 @@ export const fetchReportePorTipo = async (filtros: ReporteDTO): Promise<ReporteD
       try {
           console.log("(comprobanteService) Fetching reporte por grupo:", filtros);
           // Hacemos POST a /comprobantes/reportegrupos enviando los filtros en el cuerpo
-          const response = await apiClient.post<ReporteData>('/comprobantes/reportegrupos', filtros);
+          const response = await apiClient.post<ReporteData>('/reportes/por-grupo', filtros);
           console.log("(comprobanteService) Reporte por grupo recibido:", response.data);
           return response.data || []; // Devuelve los datos o un array vacío
       } catch (error) {
