@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL_RFM5}
-    username: postgres
+    username: ${SPRING_DATASOURCE_USERNAME}
     password: 1234
 eureka:
   instance:
