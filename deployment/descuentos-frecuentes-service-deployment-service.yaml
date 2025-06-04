@@ -41,12 +41,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tarifas-service # Nombre DNS para que otros servicios (como el Gateway) lo encuentren
+  name: descuentos-frecuentes-service # Nombre DNS para que otros servicios (como el Gateway) lo encuentren
   labels:
-    app: tarifas-service # Etiqueta para este Service
+    app: descuentos-frecuentes-service # Etiqueta para este Service
 spec:
   selector:
-    app: tarifas-service # Debe coincidir con la etiqueta de los Pods del Deployment
+    app: descuentos-frecuentes-service # Debe coincidir con la etiqueta de los Pods del Deployment
   ports:
     - protocol: TCP
       port: 8083
