@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ReporteDTO, ReporteData } from '../types/reportes';
 // --- IMPORTANTE ---
 //const API_BASE_URL = 'http://52.191.57.93:8080';
-const API_BASE_URL = 'http://127.0.0.1:57049'; // por el momento es dinamico
+const API_BASE_URL = 'http://localhost:8079'; // por el momento es dinamico
 // ---------------------
 
 const apiClient = axios.create({

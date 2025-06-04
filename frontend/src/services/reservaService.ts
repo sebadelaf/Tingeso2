@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ReservaEntity, ReservaFormInput } from '../types/reserva';
 //direccion de mi backend
-const API_BASE_URL = 'http://127.0.0.1:57049';
+const API_BASE_URL = 'http://localhost:8079';
 // Creamos una "instancia" de axios. Es como configurar un mensajero
 // que ya sabe a qué dirección base (API_BASE_URL) ir y que habla JSON.
 const apiClient = axios.create({
