@@ -16,12 +16,7 @@ spec:
     spec:
       containers:
         - name: descuentos-frecuentes-service
-          image: sebadelaf10/descuentos-frecuentes-service:latest # ¡REEMPLAZA con tu imagen y tag correctos!
-          # Si tu aplicación está configurada para server.port=0,
-          # el puerto real será dinámico. Eureka lo descubrirá.
-          # Puedes declarar un containerPort (ej. 8080, el default de Spring si no fuera 0)
-          # si tus probes apuntan a ese puerto fijo del actuador o si el actuador usa el puerto de la app.
-          # Si el actuador tiene un puerto de gestión diferente y fijo, usa ese para las probes.
+          image: sebadelaf10/descuentos-frecuentes-service:latest
           ports:
             - containerPort: 8083 # Puerto donde el actuador podría estar o el puerto base de la app
           env:
